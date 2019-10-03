@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 namespace ScrabbleScore.Models
 {
   public class Scorer
@@ -51,7 +50,10 @@ namespace ScrabbleScore.Models
       {
         for(int j = 0; j < scoreGrid.Length; j++)
         {
-          if(Array.IndexOf(scoreGrid[j], AlphaChar[i]) >= 0)
+          // if(Array.IndexOf(scoreGrid[j], AlphaChar[i]) >= 0)
+          //   Score += scores[j];
+          string s = new string(scoreGrid[j]);
+          if(s.Contains(AlphaChar[i]))
             Score += scores[j];
         }
       }
