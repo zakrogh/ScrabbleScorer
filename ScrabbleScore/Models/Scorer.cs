@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Models;
+using System.Collections.Generic;
 
 namespace ScrabbleScore.Models
 {
@@ -15,25 +15,26 @@ namespace ScrabbleScore.Models
       Score = 0;
     }
 
-    public Methods( string AlphaChar, string Word)
-    {
-        IsWord();
-        CalculateScore();
-    }
+    // public static Methods( string AlphaChar, string Word)
+    // {
+    //     IsWord();
+    //     CalculateScore();
+    // }
 
-    private bool IsWord()
+    public bool IsWord()
     {
+      bool result = true;
 
       for(int i = 0; i < AlphaChar.Length; i++)
       {
         if(!Char.IsLetter(AlphaChar[i]))
         {
-          return false;
+          result = false;
         }
       }
-      return true;
+      return result;
     }
-    private int CalculateScore()
+    public void CalculateScore()
     {
       int[] scores = new int[7] {1, 2, 3, 4, 5, 8, 10};
       char[][] scoreGrid = new char[7][]
@@ -50,7 +51,8 @@ namespace ScrabbleScore.Models
       {
         for(int j = 0; j < scoreGrid.Length; j++)
         {
-
+          if(Array.IndexOf(scoreGrid[j], AlphaChar[i]) >= 0)
+            Score += scores[j];
         }
       }
     }

@@ -11,6 +11,11 @@ namespace ScrabbleScore
       Console.WriteLine("Enter the word you want to have scored:");
       string word = Console.ReadLine();
       Scorer myScorer = new Scorer(word);
+      if(myScorer.IsWord())
+        myScorer.CalculateScore();
+      else
+        Console.WriteLine("That is not a valid word.");
+      Console.WriteLine("Score: {0}", myScorer.Score);
 
     }
   }
